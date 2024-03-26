@@ -1,0 +1,44 @@
+<% layout("layouts/boilerplate.ejs") -%>
+
+<body class="w-full">
+  <div class="w-ful">
+    <%- include('../includes/categoryheader.ejs') %>
+
+    <div
+      class="grid gap-[20px] lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 w-[95%] mx-auto"
+    >
+      <%for(listing of listings){%>
+      <a href="/listings/<%= listing._id%>">
+        <div class="border-gray-200 h-[300px] rounded-md">
+          <img
+            src="<%= listing.image.url %>"
+            alt="img"
+            class="object-cover w-[100%] h-[80%] rounded-md"
+          />
+          <p class="font-semibold"><%= listing.title %></p>
+          <div class="flex gap-2">
+            <p class="text-gray-500">
+              Price: &#x20b9;<%= listing.price %>/night
+            </p>
+            <p class="text-gray-500 font-serif hidden tax-info">+18% GST</p>
+          </div>
+        </div>
+      </a>
+      <% }%>
+    </div>
+  </div>
+</body>
+<script>
+  const tax = document.getElementById("displayTotal");
+  tax.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (info of taxInfo) {
+      if (info.style.display !== "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>
+<!-- </html> -->

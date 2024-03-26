@@ -1,0 +1,132 @@
+<div
+  class="flex mdxl:flex-row flex-col justify-between w-full mt-4 mb-6 min-h-[80px] bg-white sticky top-[70px]"
+>
+  <div
+    class="flex lg:gap-8 mdxl:gap-3 sm:gap-8 mx-6 gap-3 flex-wrap justify-start"
+  >
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-house text-xl"></i>
+
+        <p class="text-[14px]">All Listing</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Trending" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-fire text-xl"></i>
+        <p class="text-[14px]">Trending</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Single Rooms" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-bed"></i>
+
+        <p class="text-[14px]">Rooms</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Castle" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-brands fa-fort-awesome text-xl"></i>
+        <p class="text-[14px]">Castle</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Mountain" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-mountain-city text-xl"></i>
+        <p class="text-[14px]">Mountain</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Amazing Pools" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-person-swimming text-xl"></i>
+        <p class="text-[14px]">Amazing Pools</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Farm" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-cow text-xl"></i>
+        <p class="text-[14px]">Farm</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Camping" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-tents text-xl"></i>
+        <p class="text-[14px]">Camping</p>
+      </button>
+    </form>
+    <form method="get" action="/listings/category?">
+      <input type="hidden" name="category" value="Igloos" />
+      <button
+        type="submit"
+        class="flex flex-col items-center justify-center cursor-pointer opacity-50 hover:opacity-100"
+      >
+        <i class="fa-solid fa-igloo text-xl"></i>
+        <p class="text-[14px]">Igloos</p>
+      </button>
+    </form>
+  </div>
+
+  <div class="flex gap-4 ml-6">
+    <div
+      class="flex justify-center lg:gap-4 gap-2 items-center bg-white border-2 border-gray-80 rounded-lg lg:px-4 px-3 h-[50px]"
+    >
+      <img src="/assets/filters.svg" alt="filter" />
+      <span class="text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Filters</span
+      >
+    </div>
+    <div>
+      <div
+        class="bg-white border-2 border-gray-80 flex justify-center items-center rounded-lg mr-6 py-2 lg:px-4 px-2"
+      >
+        <label class="inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            value=""
+            class="sr-only peer"
+            id="displayTotal"
+          />
+          <span
+            class="mr-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >display total after taxes</span
+          >
+          <div
+            class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+          ></div>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

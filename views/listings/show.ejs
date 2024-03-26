@@ -1,0 +1,164 @@
+<% layout("layouts/boilerplate.ejs") -%>
+<style>
+  #map {
+    height: 100%;
+  }
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+<body>
+  <div class="flex flex-col items-center justify-center gap-8 w-full">
+    <h1 class="font-semibold text-gray-700 text-3xl mt-4 text-center">
+      <%=listing.title%>
+    </h1>
+
+    <div class="flex flex-col justify-center items-center">
+      <img
+        src="<%=listing.image.url%>"
+        alt="img logo"
+        height="250px object-cover rounded-md"
+        class="h-[250px] w-[250px] rounded-[10px]"
+      />
+      <p class="text-base font-semibold max-w-[300px] mt-4">
+        <%=listing.owner.username%>
+      </p>
+      <p class="text-base max-w-[300px] mt-4 font-normal">
+        Description :<%=listing.description%>
+      </p>
+      <p class="text-base">
+        Price : &#x20b9;<%=listing.price.toLocaleString("en-IN")%>
+      </p>
+      <p class="text-base">Country: <%=listing.country%></p>
+      <p class="text-base">Location: <%=listing.location%></p>
+
+      <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
+      <div class="flex flex-row gap-4 my-4">
+        <a href="/listings/<%=listing._id%>/edit">
+          <button class="bg-black text-white py-2 px-4 rounded-[10px]">
+            Edit
+          </button></a
+        >
+        <form method="post" action="/listings/<%=listing._id%>?_method=DELETE">
+          <button class="bg-red-500 text-white py-2 px-4 rounded-[10px]">
+            delete
+          </button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+    <% if(currUser) {%>
+
+    <div>
+      <h4 class="font-semibold text-[30px]">Leave a comment</h4>
+      <form method="post" action="/listings/<%=listing._id%>/reviews">
+        <div>
+          <label for="rating" class="font-semibold">Rating</label>
+
+          <fieldset class="starability-slot">
+            <input
+              type="radio"
+              id="no-rate"
+              class="input-no-rate"
+              name="review[rating]"
+              value="1"
+              checked
+              aria-label="No rating."
+            />
+            <input
+              type="radio"
+              id="first-rate1"
+              name="review[rating]"
+              value="1"
+            />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input
+              type="radio"
+              id="first-rate2"
+              name="review[rating]"
+              value="2"
+            />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input
+              type="radio"
+              id="first-rate3"
+              name="review[rating]"
+              value="3"
+            />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input
+              type="radio"
+              id="first-rate4"
+              name="review[rating]"
+              value="4"
+            />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input
+              type="radio"
+              id="first-rate5"
+              name="review[rating]"
+              value="5"
+            />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+        </div>
+        <div class="flex flex-col gap-4 justify-center items-center">
+          <label for="comment" class="font-semibold">comment</label>
+          <textarea
+            type="text"
+            id="comment"
+            cols="40"
+            rows="5"
+            name="review[comment]"
+            class="border-black border-2 p-4 rounded-sm"
+            placeholder="Give your valuable review..."
+          ></textarea>
+        </div>
+        <div class="my-4">
+          <button class="bg-black text-white py-2 px-4 rounded-[10px]">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <% } %> <% if(listing.reviews.length) {%>
+    <div class="my-8 w-[50%]">
+      <h1 class="font-semibold text-[20px]">Reviews</h1>
+      <div class="grid grid-cols-2 gap-6 my-8">
+        <% for(review of listing.reviews) { %>
+        <div class="font-medium border-2 flex flex-col gap-4">
+          <p class="starability-result" data-rating="<%=review.rating%>"></p>
+          <p><%= review.comment %></p>
+          <p><%=review.author.username%></p>
+          <form
+            method="post"
+            action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
+          >
+            <button class="bg-black text-white py-2 px-4 rounded-[10px]">
+              delete
+            </button>
+          </form>
+        </div>
+        <% }%>
+      </div>
+    </div>
+    <% } %>
+    <div>
+      <h1 class="text-2xl font-semibold">We find here</h1>
+
+      <div id="map" style="height: 400px; width: 60vw"></div>
+      <script>
+        function initMap() {
+          // Create a new map object centered at a specific location
+          var map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 28.61, lng: 77.2 },
+            zoom: 8, // Set the initial zoom level
+          });
+        }
+      </script>
+    </div>
+  </div>
+</body>
