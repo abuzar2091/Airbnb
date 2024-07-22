@@ -7,7 +7,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "node initDB/index.js",
         "dev": "npm-run-all --parallel dev:*",
         "dev:server": "nodemon index.js",
         "dev:css": "nodemon -e ejs -x \"npm run build-css\"",

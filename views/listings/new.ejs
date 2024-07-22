@@ -1,10 +1,10 @@
 <% layout("layouts/boilerplate.ejs") -%>
 <body>
-  <div class="flex flex-col items-center justify-center gap-2 min-w-[700px]">
+  <div class="flex flex-col items-center justify-center gap-2 ">
     <h1 class="font-semibold text-gray-700 text-3xl my-4">
       Create a New Listing
     </h1>
-    <div class="flex justify-center ">
+    <div class="lg:w-[80%] md:w-[70%] w-[80%]  mx-auto">
       <form
         id="myForm"
         method="post"
@@ -41,7 +41,7 @@
             placeholder="Enter image url"
             class="border-2 border-gray-300 p-2 bg-white rounded-md"
           />
-          <div class="flex gap-2">
+          <div class="flex sm:flex-row flex-col gap-2">
             <label for="price">Price</label>
             <input
               id="price"
@@ -66,7 +66,7 @@
               <option value="Igloos">Igloos</option>
             </select>
           </div>
-          <div class="flex gap-2">
+          <div class="flex md:flex-row flex-col gap-2">
             <label for="location">Location</label>
             <input
               id="location"

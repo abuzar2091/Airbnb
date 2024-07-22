@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <form method="get" action="/listings/search?">
+    <form method="get" class="hidden md:flex" action="/listings/search?">
       <div class="flex lg:gap-4 gap-2">
         <div class="relative">
           <i
@@ -44,14 +44,39 @@
       <p><a href="/logout" class="font-semibold">Logout</a></p>
       <% } %>
     </div>
+
+   
     
-    <div id="hambar" class="md:hidden mr-8 hover:opacity-80 transform hover:scale-105 shadow-md">
+    <div id="hambar" class="md:hidden flex mr-8 hover:opacity-80 transform hover:scale-105 shadow-md">
       <img src="/assets/menu.svg" alt="hambar" />
   </div>
   
   </div>
-
-  <div id="small-menu" class="hidden ml-4 ">
+ <form method="get" class="md:hidden mx-auto " action="/listings/search?">
+      <div class="flex lg:gap-4 gap-2">
+        <div class="relative">
+          <i
+            class="fa-solid fa-magnifying-glass absolute lg:left-4 top-4 left-2"
+          ></i>
+          <input
+            id="searchInput"
+            type="text"
+            name="destination"
+            value=""
+            placeholder="Search Destination "
+            class="border-gray-300 border-2 py-2 lg:px-10 px-8 rounded-xl"
+            
+            
+          />
+        </div>
+        <button id="searchBtn"
+          class="bg-red-500 hover:bg-red-300 text-white py-2 lg:px-4 px-2 rounded-3xl"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  <div id="small-menu" class="hidden  ml-4 ">
     <p><a href="/listings/new">Airbnb your home</a></p>
     <%if(!currUser){%>
     <p><a href="/signup" class="font-semibold">Signup</a></p>

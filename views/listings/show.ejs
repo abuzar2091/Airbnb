@@ -24,7 +24,7 @@
         class="h-[250px] w-[250px] rounded-[10px]"
       />
       <p class="text-base font-semibold max-w-[300px] mt-4">
-        <%=listing.owner.username%>
+        <%=listing.owner?.username%>
       </p>
       <p class="text-base max-w-[300px] mt-4 font-normal">
         Description :<%=listing.description%>
@@ -35,7 +35,7 @@
       <p class="text-base">Country: <%=listing.country%></p>
       <p class="text-base">Location: <%=listing.location%></p>
 
-      <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
+      <% if(currUser && currUser._id.equals(listing.owner?._id)){ %>
       <div class="flex flex-row gap-4 my-4">
         <a href="/listings/<%=listing._id%>/edit">
           <button class="bg-black text-white py-2 px-4 rounded-[10px]">

@@ -22,7 +22,6 @@ module.exports.showListing = async (req, res) => {
 module.exports.renderNewListingForm = (req, res) => {
   res.render("listings/new.ejs");
 };
-
 module.exports.createListing = async (req, res, next) => {
   const url = req.file.path;
   const filename = req.file.filename;
@@ -69,7 +68,7 @@ module.exports.deleteListing = async (req, res) => {
   const url = imageUrl.split("/");
   const publicId = url[url.length - 2] + "/" + url[url.length - 1].slice(0, -4);
 
-    cloudinary.uploader.destroy(publicId).then((res)=>console.log(res));
+   await cloudinary.uploader.destroy(publicId).then((res)=>console.log(res));
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Listing Deleted!");
     res.redirect(`/listings`);

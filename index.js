@@ -9,10 +9,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
 const ExpressError = require("./utils/ExpressError.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -21,7 +20,6 @@ const app = express();
 app.use(express.static("public"));
 
 const dbUrl = process.env.ATLAS_DBURL;
-// const mongoUrl="mongodb://127.0.0.1:27017/AirBnb"
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -31,7 +29,7 @@ const { required } = require("joi");
 
 app.use(methodOverride("_method"));
 main()
-  .then((res) => console.log("connection stablish successfully"))
+  .then((res) => console.log(res,"connection stablish successfully"))
   .catch((err) => console.log(err));
 
 async function main() {
